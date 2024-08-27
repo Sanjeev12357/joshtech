@@ -1,0 +1,190 @@
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    font-family: "Be Vietnam Pro", sans-serif;
+  }
+  
+  #wrapper {
+    width: 100%;
+    height: 100vh;
+    overflow-y: auto;
+    overflow-x: hidden;
+    scroll-behavior: smooth;
+  }
+
+
+  /* Navbar */
+
+  .logoimg{
+    
+    width:158px;
+    height:76px;
+  }
+  
+
+  header {
+    width: 100%;
+    /* height: auto; */
+    display: flex;
+    padding: 38px 96px;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  
+nav ul {
+    display: flex;
+    margin-right: 4em;
+   
+    gap: 2.5rem;
+  }
+  
+  nav ul li {
+    list-style-type: none;
+  }
+  
+  nav ul li a {
+    text-decoration: none;
+    color: #1f1f1f;
+    transition: font-weight 0.3s;
+    font-size: 20px;
+    line-height: 17px;
+    display: inline-block;
+    padding: 12px 14px;
+  }
+
+  nav ul li .colorednav{
+    display: flex;
+    align-items: center;
+    background-color: #FFB501;
+   
+    border-radius: 10px;
+   
+  }
+
+  /* Hero Section Start  */
+.heroSection {
+    gap: 5rem;
+    margin-top: 4rem;
+    padding: 38px 96px;
+    
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    width: 100%;
+  }
+
+  
+  .elipse15{
+    top:-2rem;
+    left:-3rem;
+    position: absolute;
+  }
+  .elipse16{
+    bottom:-5rem;
+    left:2rem;
+    
+    position: absolute;
+  }
+  .rectangle52{
+    bottom:0rem;
+    right:2rem;
+    
+    position: absolute;
+  }
+  
+  .infoContainer {
+    width: 50%;
+    display: flex;
+    position: relative;
+    flex-direction: column;
+    gap: 6rem;
+    justify-content: center;
+    /* width: 100%; */
+  }
+
+  .heading {
+    font-size: 48px;
+    font-weight:700;
+    color: #343d68;
+    line-height: 59px;
+  }
+
+  .desc{
+  
+    font-size: 16px;
+    font-weight: 400;
+    color: #767676;
+    line-height: 24px;
+  }
+
+  .role {
+    color: #FFB501;
+    
+  }
+
+  .imgContainer{
+    position: relative;
+    width: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  .elipse12{
+    top:-2rem;
+    left:0rem;
+    position: absolute;
+  }
+  .polygon1{
+    bottom:1rem;
+    right:2rem;
+    position: absolute;
+  }
+  
+
+
+  
+
+  .btn {
+    background-color: #FFB501;
+    text-transform: uppercase;
+    width: fit-content;
+    color: black;
+    padding: 0.8rem 2.3rem;
+    box-shadow: 5px 5px 7px 0px #0000003f;
+    font-size: 18px;
+    cursor: pointer;
+    transition: all 0.5s;
+    font-weight: 500;
+    border: solid 3px transparent;
+    position: relative;
+    z-index: 1;
+  }
+  
+  .btn::before {
+    content: "";
+    position: absolute;
+    background-color: #fff;
+    top: 0px;
+    left: 0;
+    right: 0;
+    bottom: 0px;
+    z-index: -1;
+    transform: scaleX(0);
+    transform-origin: left;
+    transition: all 0.8s;
+  }
+  
+  .btn:hover::before {
+    transform: scaleX(1);
+  }
+  
+  .btn:hover {
+    border: solid 3px #e84949;
+    color: black;
+  }
+  
+  
