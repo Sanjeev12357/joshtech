@@ -188,3 +188,94 @@ nav ul {
   }
   
   
+  
+#projects{
+    gap: 3rem;
+    background-color:#F1F1F6 ;
+   
+    padding: 38px 96px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    flex-direction: column;
+    width: 100%;
+  }
+  
+  .projectheadingdiv{
+    display: flex;
+    flex-direction: column;
+  
+    align-items: center;
+  }
+
+  .projectTitle{
+    font-size: 32px;
+    font-weight:700;
+    color: #2B2B2B;
+    line-height: 59px;
+  }
+
+  .projectsecdesc{
+    margin-top: 0.5rem;
+    font-size: 15px;
+    font-weight: 400;
+    color: #767676;
+    line-height: 24px;
+    text-align: center;
+  }
+
+  .projectContainer{
+    display: flex;
+  
+    gap: 5rem;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+  }
+  .projectCard{
+    width: 385px;
+    height: 432px;
+    background-color: #fff;
+    border-radius: 12px;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+   
+    display: flex;
+    flex-direction: column;
+   
+    align-items: center;
+   gap:1rem;
+    padding-left: 1rem;
+    padding-right: 1rem;
+  }
+  .projectDesc{
+    
+    font-size: 15px;
+    font-weight: 400;
+    color: #767676;
+    line-height: 24px;
+   
+    
+  }
+  .projectDesc h3{
+    font-size: 16px;
+    font-family: 500;
+    color: #2B2B2B;
+  }
+  .projectSkills {
+    margin-top: 5px;
+    
+    display: flex;
+    gap:10px;
+    flex-wrap: wrap;
+  }
+  .projectSkills span{
+    font-size: 13px;
+    font-weight: 500;
+    color: black;
+    line-height: 24px;
+    padding:1px 14px;
+    
+    border-radius: 14px 14px ;
+    background-color: #EFEFEF;
+  }
