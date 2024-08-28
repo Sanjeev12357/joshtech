@@ -172,6 +172,121 @@
               </div>
          </section>
           <!--Project Section End-->
+
+
+          <!--Recommendation Carousel-->
+
+          <section id="recommendations" class="recommendationSection">
+
+            <div class="">
+              <div class="recomHeadingdiv"><h2 class="recomTitle">Projects</h2></div>
+                <p class="recomsecDesc">Lorem ipsum dolor sit amet consectetur adipisicing elit. Minima rerum ut enim veniam nihil quam facilis dolorum beatae animi officia.</p>
+            </div>
+
+            <div class="carousel-container">
+              <div class="carousel" id="carousel">
+                  <!-- Cards will be dynamically inserted here -->
+              </div>
+              <button class="nav-button prev" id="prev">&lt;</button>
+              <button class="nav-button next" id="next">&gt;</button>
+          </div>
+          <div class="dots-container" id="dots-container">
+              <!-- Dots will be dynamically inserted here -->
+          </div>
+          </section>
+
+
+          <!--Recommendation Carousel End-->
+
+          <!--Contact Section-->
+
+          <div class="container">
+            
+           <div class="leftContainer">
+            <h2>Leave Me Your Info</h2>
+            <div class="form-container">
+             
+              <form id="contactForm">
+                  <div class="form-group">
+                      <label for="name">Your Name (required)</label>
+                      <input type="text" id="name" name="name" required>
+                      <div class="error" id="nameError"></div>
+                  </div>
+                  <div class="form-group">
+                      <label for="email">Your Email (required)</label>
+                      <input type="email" id="email" name="email" required>
+                      <div class="error" id="emailError"></div>
+                  </div>
+                  <div class="form-group">
+                      <label for="subject">Subject</label>
+                      <input type="text" id="subject" name="subject">
+                  </div>
+                  <div class="form-group">
+                      <label for="message">Your Message</label>
+                      <textarea id="message" name="message"></textarea>
+                      <div class="error" id="messageError"></div>
+                  </div>
+                  <button type="submit">Send Message</button>
+              </form>
+          </div>
+           </div>
+           <div class="rightContainer">
+            <h2>Contact Information</h2>
+            <div class="contact-info">
+              <div class="info-group">
+                <div class="yellowEllipse">
+                    <img src="./assets/Vector.png"/>
+                </div>
+                <div class="info-item">
+                    <p class="label">Country:</p>
+                    <p class="value">United States</p>
+                </div>
+                <div class="info-item">
+                    <p class="label">City:</p>
+                    <p class="value">New York</p>
+                </div>
+                <div class="info-item">
+                    <p class="label">Street:</p>
+                    <p class="value">123 Broadway</p>
+                </div>
+            </div>
+            <div class="info-group">
+              <div class="yellowEllipse">
+                  <img src="./assets/Vector.png"/>
+              </div>
+              <div class="info-item">
+                  <p class="label">Country:</p>
+                  <p class="value">United States</p>
+              </div>
+              <div class="info-item">
+                  <p class="label">City:</p>
+                  <p class="value">New York</p>
+              </div>
+              <div class="info-item">
+                  <p class="label">Street:</p>
+                  <p class="value">123 Broadway</p>
+              </div>
+          </div>
+          <div class="info-group">
+            <div class="yellowEllipse">
+                <img src="./assets/Vector.png"/>
+            </div>
+            <div class="info-item">
+                <p class="label">Country:</p>
+                <p class="value">United States</p>
+            </div>
+            <div class="info-item">
+                <p class="label">City:</p>
+                <p class="value">New York</p>
+            </div>
+            <div class="info-item">
+                <p class="label">Street:</p>
+                <p class="value">123 Broadway</p>
+            </div>
+        </div>
+          </div>
+           </div>
+        </div>
     </div>
 
 
@@ -185,7 +300,165 @@
 
 
     <script src="https://cdn.jsdelivr.net/npm/typed.js@2.0.12"></script>
+    <script>
+      document.getElementById('contactForm').addEventListener('submit', function(e) {
+          e.preventDefault();
+          
+          // Reset error messages
+          document.querySelectorAll('.error').forEach(el => el.textContent = '');
+          
+          let isValid = true;
+          const name = document.getElementById('name').value.trim();
+          const email = document.getElementById('email').value.trim();
+          const subject = document.getElementById('subject').value.trim();
+          const message = document.getElementById('message').value.trim();
+          
+          // Validate name
+          if (name === '') {
+              document.getElementById('nameError').textContent = 'Name is required';
+              isValid = false;
+          }
+          
+          // Validate email
+          const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+          if (!emailRegex.test(email)) {
+              document.getElementById('emailError').textContent = 'Valid email is required';
+              isValid = false;
+          }
+          
+          // Validate message (optional in this case)
+          if (message === '') {
+              document.getElementById('messageError').textContent = 'Please enter a message';
+              isValid = false;
+          }
+          
+          if (isValid) {
+              console.log({
+                  name: name,
+                  email: email,
+                  subject: subject,
+                  message: message
+              });
+              // Here you would typically send the data to a server
+              alert('Form submitted successfully!');
+              this.reset(); // Reset form fields
+          }
+      });
+  </script>
+    <script>
+      const testimonials = [
+          {
+              rating: 4,
+              heading: "Great Product",
+              description: "This product exceeded my expectations. It's user-friendly and efficient.",
+              name: "John Doe",
+              position: "Software Engineer",
+              profileImage: "./assets/Profile1.png"
+          },
+          {
+              rating: 5,
+              heading: "Absolutely Love It",
+              description: "I can't imagine working without this tool now. It's a game-changer!",
+              name: "Jane Smith",
+              position: "Project Manager",
+              profileImage: "./assets/Profile2.png"
+          },
+          {
+              rating: 3,
+              heading: "Good, but room for improvement",
+              description: "While it's a solid product, there are a few features I'd like to see added.",
+              name: "Mike Johnson",
+              position: "UX Designer",
+              profileImage: "./assets/Profile3.png"
+          },
+          {
+              rating: 5,
+              heading: "Outstanding Service",
+              description: "The customer support team went above and beyond to help me. Truly impressed!",
+              name: "Emily Brown",
+              position: "Marketing Specialist",
+              profileImage:  "./assets/Profile1.png"
+          },
+          {
+              rating: 4,
+              heading: "Very Useful Tool",
+              description: "This has streamlined our workflow significantly. Great value for money.",
+              name: "David Wilson",
+              position: "Product Manager",
+              profileImage: "./assets/Profile2.png"
+          }
+      ];
 
+      const carousel = document.getElementById('carousel');
+      const prevButton = document.getElementById('prev');
+      const nextButton = document.getElementById('next');
+      const dotsContainer = document.getElementById('dots-container');
+
+      function createCard(testimonial) {
+          const card = document.createElement('div');
+          card.className = 'card';
+          card.innerHTML = `
+              <div class="rating">${'<span class="star">★</span>'.repeat(testimonial.rating)}${'<span class="star">☆</span>'.repeat(5 - testimonial.rating)}</div>
+              <div class="heading">${testimonial.heading}</div>
+              <div class="description">${testimonial.description}</div>
+              <div class="profile">
+                  <img src="${testimonial.profileImage}" alt="${testimonial.name}" class="profile-pic">
+                  <div class="profile-info">
+                      <div class="profile-name">${testimonial.name}</div>
+                      <div class="profile-position">${testimonial.position}</div>
+                  </div>
+              </div>
+          `;
+          return card;
+      }
+
+      testimonials.forEach((testimonial, index) => {
+          carousel.appendChild(createCard(testimonial));
+          const dot = document.createElement('div');
+          dot.className = 'dot';
+          if (index === 0) dot.classList.add('active');
+          dotsContainer.appendChild(dot);
+      });
+
+      let scrollAmount = 0;
+      const cardWidth = 360; // 340px card width + 20px gap
+      const totalCards = testimonials.length;
+      const visibleCards = 4;
+
+      function updateDots() {
+          const activeDotIndex = Math.round(scrollAmount / cardWidth);
+          document.querySelectorAll('.dot').forEach((dot, index) => {
+              dot.classList.toggle('active', index === activeDotIndex);
+          });
+      }
+
+      nextButton.addEventListener('click', () => {
+          scrollAmount += cardWidth;
+          if (scrollAmount > (totalCards - visibleCards) * cardWidth) {
+              scrollAmount = (totalCards - visibleCards) * cardWidth;
+          }
+          carousel.scrollTo({
+              left: scrollAmount,
+              behavior: 'smooth'
+          });
+          updateDots();
+      });
+
+      prevButton.addEventListener('click', () => {
+          scrollAmount -= cardWidth;
+          if (scrollAmount < 0) {
+              scrollAmount = 0;
+          }
+          carousel.scrollTo({
+              left: scrollAmount,
+              behavior: 'smooth'
+          });
+          updateDots();
+      });
+
+      // Initialize dots
+      updateDots();
+  </script>
     <script>
         var typeData = new Typed(".role", {
           strings: [
