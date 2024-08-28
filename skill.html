@@ -126,6 +126,17 @@
             border: 1px solid #ddd;
             border-radius: 4px;
         }
+          .skill-input-group {
+            display: flex;
+            margin-bottom: 10px;
+        }
+        .skill-input-group input {
+            flex: 1;
+            margin-right: 10px;
+        }
+        #addMoreSkillBtn {
+            margin-bottom: 15px;
+        }
     </style>
 </head>
 <body>
@@ -171,27 +182,20 @@
     <div id="addSkillModal" class="modal">
         <div class="modal-content">
             <span class="close">&times;</span>
-            <h2>Add New Skill</h2>
+            <h2>Add New Skills</h2>
             <form id="addSkillForm">
                 <div class="form-group">
                     <label for="skillDomain">Skill Domain:</label>
-                    <select id="skillDomain" required>
-                        <option value="frontend">Front End Development</option>
-                        <option value="languages">Languages</option>
-                        <option value="backend">Back End Development</option>
-                    </select>
+                    <input type="text" id="skillDomain" required>
                 </div>
-                <div class="formgroup">
-                    <div class="form-group">
-                        <label for="skillName">Skill Name:</label>
-                        <input type="text" id="skillName" required>
-                    </div>
-                    <div class="form-group">
-                        <label for="skillProficiency">Proficiency (%):</label>
-                        <input type="number" id="skillProficiency" min="0" max="100" required>
+                <div id="skillInputs">
+                    <div class="skill-input-group">
+                        <input type="text" class="skillName" placeholder="Skill Name" required>
+                        <input type="number" class="skillProficiency" placeholder="Proficiency (%)" min="0" max="100" required>
                     </div>
                 </div>
-                <button type="submit" class="submit-skill-btn">Add Skill</button>
+                <button type="button" id="addMoreSkillBtn">Add Another Skill</button>
+                <button type="submit" class="submit-skill-btn">Add Skills</button>
             </form>
         </div>
     </div>
@@ -275,7 +279,7 @@
 
     <script>
         // Initial skills data
-        const initialSkills = {
+        let skillsData = {
             frontend: [
                 { name: 'HTML', proficiency: 90 },
                 { name: 'CSS', proficiency: 85 },
@@ -293,19 +297,28 @@
             ]
         };
 
-        // Function to render skills
         function renderSkills() {
-            for (const [domain, skills] of Object.entries(initialSkills)) {
-                const container = document.getElementById(domain);
-                container.innerHTML = `<h2>${container.querySelector('h2').textContent}</h2>`;
+            const skillsGrid = document.querySelector('.skills-grid');
+            skillsGrid.innerHTML = ''; // Clear existing content
+
+            for (const [domain, skills] of Object.entries(skillsData)) {
+                const categoryDiv = document.createElement('div');
+                categoryDiv.className = 'skill-category';
+                categoryDiv.id = domain.toLowerCase().replace(/\s+/g, '-');
+
+                const heading = document.createElement('h2');
+                heading.textContent = domain;
+                categoryDiv.appendChild(heading);
+
                 skills.forEach(skill => {
                     const skillElement = createSkillElement(skill.name, skill.proficiency);
-                    container.appendChild(skillElement);
+                    categoryDiv.appendChild(skillElement);
                 });
+
+                skillsGrid.appendChild(categoryDiv);
             }
         }
 
-        // Function to create a skill element
         function createSkillElement(name, proficiency) {
             const skillBar = document.createElement('div');
             skillBar.className = 'skill-bar';
@@ -325,6 +338,7 @@
         const modal = document.getElementById('addSkillModal');
         const addSkillBtn = document.getElementById('addSkillBtn');
         const closeBtn = document.getElementsByClassName('close')[0];
+        const addMoreSkillBtn = document.getElementById('addMoreSkillBtn');
 
         addSkillBtn.onclick = () => modal.style.display = 'block';
         closeBtn.onclick = () => modal.style.display = 'none';
@@ -332,17 +346,42 @@
             if (event.target == modal) modal.style.display = 'none';
         }
 
+        addMoreSkillBtn.onclick = () => {
+            const skillInputs = document.getElementById('skillInputs');
+            const newSkillInput = document.createElement('div');
+            newSkillInput.className = 'skill-input-group';
+            newSkillInput.innerHTML = `
+                <input type="text" class="skillName" placeholder="Skill Name" required>
+                <input type="number" class="skillProficiency" placeholder="Proficiency (%)" min="0" max="100" required>
+            `;
+            skillInputs.appendChild(newSkillInput);
+        };
+
         // Form submission
         document.getElementById('addSkillForm').onsubmit = function(e) {
             e.preventDefault();
             const domain = document.getElementById('skillDomain').value;
-            const name = document.getElementById('skillName').value;
-            const proficiency = parseInt(document.getElementById('skillProficiency').value);
+            const skillInputGroups = document.querySelectorAll('.skill-input-group');
+            
+            const newSkills = Array.from(skillInputGroups).map(group => ({
+                name: group.querySelector('.skillName').value,
+                proficiency: parseInt(group.querySelector('.skillProficiency').value)
+            }));
 
-            initialSkills[domain].push({ name, proficiency });
+            if (!skillsData[domain]) {
+                skillsData[domain] = [];
+            }
+            skillsData[domain].push(...newSkills);
+
             renderSkills();
             modal.style.display = 'none';
             this.reset();
+            document.getElementById('skillInputs').innerHTML = `
+                <div class="skill-input-group">
+                    <input type="text" class="skillName" placeholder="Skill Name" required>
+                    <input type="number" class="skillProficiency" placeholder="Proficiency (%)" min="0" max="100" required>
+                </div>
+            `;
         };
 
         // Initial render
