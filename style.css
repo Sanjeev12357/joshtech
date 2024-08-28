@@ -557,11 +557,12 @@ button:hover {
 }
 
 .info-item .label {
-  color: #666;
+  color: #333;
   text-align: left;
 }
 
 .info-item .value {
-  color: #333;
+  
+  color: #666;
   text-align: right;
 }
